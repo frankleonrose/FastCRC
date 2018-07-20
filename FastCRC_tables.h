@@ -31,10 +31,10 @@
 #define FastCRC_tables
 #include "inttypes.h"
 
-#ifdef __AVR__
-#include <avr/pgmspace.h>
+#if defined(ESP8266) || defined(ESP32)
+#include <pgmspace.h>
 #else
-#include <pgmspace.h>	
+#include <avr/pgmspace.h> // Most non-AVR platforms still have this file for compatibility
 #endif
 
 const uint8_t crc_table_crc7[256] PROGMEM = {
